@@ -2,8 +2,6 @@ package DSA;
 
 public class FirstProgram {
     public static void main(String[] args) {
-        //Primitive Type - stack memory
-        //Arrays - heap memory
     int num[]= {23,45,67,100,90};
     System.out.println(num.length);
     num[2]=45;
@@ -18,14 +16,25 @@ public class FirstProgram {
     System.out.println(highest);
     }
     
-    }
     public int max(int num[] ) {
-        return 0;
+        int highest=num[0];
+        
+        for(byte i=0; i<num.length;i++){
+            if(num[i]>highest)
+            highest=num[i];
+        }
+        return highest;
     }
 
-    public void sum (int num[] ) {
-    
-    }
+    public int sum(int num[]) {
+        int sum=0;
+        for (byte i=0; i<num.length;i++) {
+            if(num[i]%2!=0) {
+                sum +=num[i];
+            } //end of if
+        } //end of loop
+        return sum;
+    } //end of method
 
 
 
