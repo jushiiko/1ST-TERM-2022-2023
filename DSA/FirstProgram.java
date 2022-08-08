@@ -16,14 +16,22 @@ public class FirstProgram {
     System.out.println(highest);
     }
     
+    //Time complexity - 
+    //Max
+
+
     public int max(int num[] ) {
-        int highest=num[0];
-        
+        int highest=num[0]; //1
+            //1         //n+1   n
         for(byte i=0; i<num.length;i++){
+            //n+1
             if(num[i]>highest)
-            highest=num[i];
+            highest=num[i]; //1
         }
-        return highest;
+        return highest; //1
+
+        //Time complexity - 3n+5, if n=10
+        //Time complexity - 35 units
     }
 
     public int sum(int num[]) {
