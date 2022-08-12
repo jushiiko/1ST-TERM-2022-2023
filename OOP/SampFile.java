@@ -1,4 +1,4 @@
-package OOP;
+
 
 public class SampFile {
     public static void main(String[] args) {
