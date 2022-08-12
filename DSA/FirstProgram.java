@@ -1,5 +1,4 @@
 package DSA;
-
 public class FirstProgram {
     public static void main(String[] args) {
     int num[]= {23,45,67,100,90};

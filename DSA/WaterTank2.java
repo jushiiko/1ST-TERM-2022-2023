@@ -1,5 +1,4 @@
 package DSA;
-
 public class WaterTank2 {
 
     //ADTs - Abstract Data Type

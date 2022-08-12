@@ -1,7 +1,5 @@
 package DSA;
 
-import java.sql.SQLSyntaxErrorException;
-
 public class WaterTank {
     // ADTs - Abstract Data Type
     // 4 operations
