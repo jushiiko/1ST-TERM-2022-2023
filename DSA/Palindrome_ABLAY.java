@@ -1,11 +1,11 @@
 package DSA;
 import java.util.*;   
 import java.util.regex.*;
-class Palindrome  
+class Palindrome_ABLAY  
 {  
    public static void main(String args[])  
    {  
-      String original, orig, reverse = ""; // Objects of String class  
+      String original, orig, reverse = "";   
       Scanner in = new Scanner(System.in);   
       System.out.println("Enter a string/number to check if it is a palindrome");  
       orig = in.nextLine(); 
