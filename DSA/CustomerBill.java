@@ -24,6 +24,8 @@ public class CustomerBill {
         double cash = input.nextDouble();
         double change = cash - net_total;
         System.out.println("Your change is: " + change);
+        System.out.println("John Sebastian Ablay");
 
     }
 }
+// John Sebastian Ablay - A221
