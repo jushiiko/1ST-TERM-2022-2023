@@ -20,6 +20,9 @@ public class arrayTest1 {
                 max = myArray[d];
             }
         }
+        for (int d = 0; d < 10; d++) {
+            System.out.println(myArray[d]);
+        }
         System.out.println("Highest value: " + max);
 
     }
