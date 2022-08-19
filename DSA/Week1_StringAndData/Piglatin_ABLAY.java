@@ -5,6 +5,7 @@ import java.util.regex.*;
 
 public class Piglatin_ABLAY {
     public static void main(String args[]) {
+        System.out.println("John Sebastian Ablay");
         Scanner in = new Scanner(System.in);
         System.out.println("Enter a word");
         String s = in.next();
@@ -35,8 +36,6 @@ public class Piglatin_ABLAY {
 
         String f = s.substring(i) + s.substring(0, i) + "ay";
         System.out.println(f);
-        System.out.println("John Sebastian Ablay");
-
 
     }
 }
