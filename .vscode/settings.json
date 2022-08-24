@@ -2,5 +2,6 @@
     "java.project.sourcePaths": [
         "OOP",
         ""
-    ]
+    ],
+    "workbench.statusBar.visible": true
 }

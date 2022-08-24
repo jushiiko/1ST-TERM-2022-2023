@@ -8,7 +8,7 @@ public class Piglatin_ABLAY {
         System.out.println("John Sebastian Ablay");
         Scanner in = new Scanner(System.in);
         System.out.println("Enter a word");
-        String s = in.next();
+        String s = in.nextLine();
         Pattern pattern = Pattern.compile("[^a-z]");
         Matcher matcher = pattern.matcher(s);
         boolean specialchar = matcher.find();
@@ -18,10 +18,7 @@ public class Piglatin_ABLAY {
         }
 
         int size = s.length();
-        if (size <= 3 || size >= 10) {
-            System.out.println("error");
-            return;
-        } else if (s == (" ")) {
+        if (size <= 3 || size >= 10 || s.contains(" ")) {
             System.out.println("error");
             return;
         }
