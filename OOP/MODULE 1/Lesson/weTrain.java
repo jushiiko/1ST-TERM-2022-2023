@@ -1,5 +1,3 @@
-package Lesson;
-
 import java.util.*;
 
 public class weTrain {
@@ -26,5 +24,6 @@ public class weTrain {
         } else {
             System.out.println("Invalid input.");
         }
+    n.close();
     }
 }

@@ -1,5 +1,3 @@
-package Lesson;
-
 import java.util.*;
 
 public class sales {
@@ -19,5 +17,6 @@ public class sales {
         } while (true);
 
         System.out.println("Total amount: " + String.format("%.2f", total));
+        s.close();
     }
 }

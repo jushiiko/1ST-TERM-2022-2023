@@ -1,9 +1,8 @@
 // a program that determines the biggest value in an array
-package Lesson;
 
 import java.util.*;
 
-public class arrayTest1 {
+public class Array {
     public static void main(String[] args) {
         Scanner y = new Scanner(System.in);
         int myArray[] = new int[10];
@@ -24,7 +23,7 @@ public class arrayTest1 {
             System.out.println(myArray[d]);
         }
         System.out.println("Highest value: " + max);
-
+        y.close();
     }
 
 }

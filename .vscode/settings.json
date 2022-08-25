@@ -1,7 +1,9 @@
 {
     "java.project.sourcePaths": [
+        ".",
         "OOP",
-        ""
+        "OOP\\MODULE 1",
+        "OOP\\MODULE 1\\Lesson"
     ],
     "workbench.statusBar.visible": true
 }

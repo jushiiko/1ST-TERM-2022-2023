@@ -1,4 +1,4 @@
-package DATLJ;
+/*package DATLJ;
 
 public class Animal {
     public static String iAmDog() {
@@ -15,4 +15,4 @@ public class Animal {
         }
     }
 
-}
+}*/
