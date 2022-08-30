@@ -6,15 +6,20 @@ public class NumberOfSeconds {
     public static void main(String[] args) {
         int seconds;
         seconds = Integer.parseInt(JOptionPane.showInputDialog("Enter seconds: "));
-        JOptionPane.showMessageDialog(null, seconds + "seconds have been converted to: " + 
-        );
+        JOptionPane.showMessageDialog(null, seconds + " seconds have been converted to: " + 
+        hours(seconds) + " hour/s, " + minutes(seconds) + " minute/s, and " + seconds(seconds) + " remaining second/s.");
     }
 
-    public static int Convert (int sec) {
-        int hours = sec / 24;
-        int minutes = (sec % 60) % 60;
-        int seconds = sec % 60;
+    public static int hours (int seconds) {
+        int hours = seconds / 3600;
         return hours;
-
-    } 
+    }
+    public static int minutes (int seconds) {
+        int minutes = (seconds % 3600) / 60;
+        return minutes;
+    }
+    public static int seconds (int seconds) {
+        int seconds1 = (seconds % 3600) % 60;
+        return seconds1;
+    }
 }
