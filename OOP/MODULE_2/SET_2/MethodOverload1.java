@@ -1,4 +1,4 @@
-package MODULE_2;
+package MODULE_2.SET_2;
 
 import javax.swing.JOptionPane;
 
