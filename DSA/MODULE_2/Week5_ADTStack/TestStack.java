@@ -12,7 +12,7 @@ public class TestStack {
         do {
             all = "\nElements\t: " + st.display() +
                     "\nCapacity\t: " + st.getCapacity() + "\nCount\t: " + st.size() +
-                    "\tEmpty : " + st.isEmpty() + "\tFull : " + st.isFull() +
+                    "\tEmpty : " + st.empty() + "\tFull : " + st.full() + 
                     "\nFirst\t: " + st.first() + "\tLast : " + st.last() +
                     "\nTop\t: " + st.top() + "\tPeek : " + st.peek();
             option = JOptionPane.showInputDialog(null, new JTextArea(all + "\nSelect"), "Menu", 1, null, menu, menu[0])
