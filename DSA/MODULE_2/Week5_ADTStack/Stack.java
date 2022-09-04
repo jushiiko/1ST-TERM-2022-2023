@@ -7,6 +7,7 @@ package DSA.MODULE_2.Week5_ADTStack;
  */
 public class Stack {
     private int num[], top, capacity;
+    private String found;
 
     public Stack() {
         top = -1;
@@ -62,6 +63,7 @@ public class Stack {
         }
 
     }
+
     public int last() {
         if (isEmpty()) {
             System.err.println("Stack is empty");
@@ -87,7 +89,7 @@ public class Stack {
         } else {
             top++;
             num[top] = data;
-            //compare();
+            compare();
             System.out.println(top + " " + num[top]);
         }
     }
@@ -115,26 +117,26 @@ public class Stack {
         return hold;
     }
 
-    /**public void compare() {
+    public void compare() {
         for (int i = 0; i < num.length; i++) {
             for (int j = 1; j < num.length; j++) {
-                if (num[i] == num[j] && i != j && num[i] != 0) { // Check if our List of duplicates already has this
-                                                                 // entry
+                if (num[i] == num[j] && i != j && num[i] != 0) {
                     System.out.println("Number is a duplicate of an element.");
-                    System.exit(0); // Add to list of duplicates
+                    System.exit(0);
                 }
             }
         }
-    }*/
+    }
 
-    public void search(int data) {
-        for (int i = 0; i < num.length; i++) {
-            for (int j = 1; j < num.length; j++) {
-                if (num[j] == data) {
-                    System.out.println("Number is found.");
-                }
+    public boolean search(int data) {
+        for (int i = 0; i <= top + 1; i++) {
+            if (num[i] == data) {
+                found = data + " is at position: " + (i + 1);
+                return true;
             }
         }
+        found = data + " not found.";
+        return false;
     }
 
     public String clear() {
@@ -143,6 +145,22 @@ public class Stack {
         } else {
             num = null;
             return "The stack has been cleared.";
+        }
+    }
+
+    public String empty() {
+        if (top <= -1) {
+            return "Yes";
+        } else {
+            return "No";
+        }
+    }
+
+    public boolean full() {
+        if (isFull()) {
+            return true;
+        } else {
+            return false;
         }
     }
 }
