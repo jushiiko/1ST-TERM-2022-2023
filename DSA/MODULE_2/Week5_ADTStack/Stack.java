@@ -56,7 +56,6 @@ public class Stack {
 
     public int peek() {
         if (isEmpty()) {
-            System.err.println("Stack is empty");
             return -1;
         } else {
             return num[top];
@@ -66,7 +65,6 @@ public class Stack {
 
     public int last() {
         if (isEmpty()) {
-            System.err.println("Stack is empty");
             return -1;
         } else {
             return num[top];
@@ -76,7 +74,6 @@ public class Stack {
 
     public int first() {
         if (isEmpty()) {
-            System.err.println("Stack is empty");
             return -1;
         } else {
             return num[0];
@@ -129,7 +126,7 @@ public class Stack {
     }
 
     public boolean search(int data) {
-        for (int i = 0; i <= top + 1; i++) {
+        for (int i = 0; i <= top; i++) {
             if (num[i] == data) {
                 found = data + " is at position: " + (i + 1);
                 return true;
@@ -162,5 +159,9 @@ public class Stack {
         } else {
             return false;
         }
+    }
+
+    public String getFound() {
+        return found;
     }
 }

@@ -12,7 +12,7 @@ public class TestStack {
         do {
             all = "\nElements\t: " + st.display() +
                     "\nCapacity\t: " + st.getCapacity() + "\nCount\t: " + st.size() +
-                    "\tEmpty : " + st.empty() + "\tFull : " + st.full() + 
+                    "\tEmpty : " + st.empty() + "\tFull : " + st.full() +
                     "\nFirst\t: " + st.first() + "\tLast : " + st.last() +
                     "\nTop\t: " + st.top() + "\tPeek : " + st.peek();
             option = JOptionPane.showInputDialog(null, new JTextArea(all + "\nSelect"), "Menu", 1, null, menu, menu[0])
@@ -20,8 +20,12 @@ public class TestStack {
             switch (option) {
                 case "Push":
                     if (!st.isFull()) {
-                        data = Integer.parseInt(
-                                JOptionPane.showInputDialog("Push: "));
+                        try {
+                            data = Integer.parseInt(JOptionPane.showInputDialog("Push: "));
+                        } catch (NumberFormatException e) {
+                            JOptionPane.showMessageDialog(null, "That is not a valid input.");
+                            break;
+                        }
                         st.push(data);
                         JOptionPane.showMessageDialog(null,
                                 data + " is inserted succesfully to the stack.");
@@ -46,9 +50,14 @@ public class TestStack {
                     if (st.isEmpty()) {
                         JOptionPane.showMessageDialog(null, "Stack is empty.");
                     } else {
-                        data = Integer.parseInt(
-                                JOptionPane.showInputDialog("Search: "));
+                        try {
+                            data = Integer.parseInt(JOptionPane.showInputDialog("Push: "));
+                        } catch (NumberFormatException e) {
+                            JOptionPane.showMessageDialog(null, "That is not a valid input.");
+                            break;
+                        }
                         st.search(data);
+                        JOptionPane.showMessageDialog(null, st.getFound());
                     }
                     break;
                 case "Clear":
