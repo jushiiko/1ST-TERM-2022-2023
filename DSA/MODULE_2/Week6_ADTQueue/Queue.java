@@ -13,7 +13,7 @@ public class Queue {
     }
 
     public Queue(int capacity) {
-        this.capacity = 5;
+        this.capacity = capacity;
         num = new int[capacity];
         front = rear = -1;
     }
@@ -58,7 +58,7 @@ public class Queue {
 
     public String display() {
         String hold = "";
-        if (isEmpty()) {
+        if (!isEmpty()) {
             for (int i = front; i <= rear; i++) {
                 hold += num[i] + " ";
             }
@@ -94,10 +94,16 @@ public class Queue {
 
     public int peek() {
         if (isEmpty()) {
-            errorMessage("Queue is empty");
             return -1;
         } else {
             return num[front];
+        }
+    }
+    public int last (){
+        if (isEmpty()) {
+            return -1;
+        } else {
+            return num[rear];
         }
     }
 
