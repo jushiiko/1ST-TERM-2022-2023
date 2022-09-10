@@ -5,7 +5,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 
 public class TestQueue2 {
-    public static void main(String[] args) {
+    public static void main(String[] args) { //John Sebastian Ablay - A221
         System.out.println("John Sebastian Ablay");
         String menu[] = { "Enqueue", "Dequeue", "Exit" };
         String option = "", all = "";
