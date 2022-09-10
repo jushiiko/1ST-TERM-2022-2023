@@ -5,6 +5,7 @@ import javax.swing.JTextArea;
 
 public class TestStack {
     public static void main(String[] args) {
+        System.out.println("John Sebastian Ablay");
         String menu[] = { "Push", "Pop", "Set Capacity", "Search", "Clear", "Exit" };
         String option = "", all = "";
         Stack st = new Stack(2);
