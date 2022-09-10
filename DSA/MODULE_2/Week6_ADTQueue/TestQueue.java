@@ -26,5 +26,7 @@ public class TestQueue {
 
         System.out.println("Empty\t: " + q.isEmpty());
         System.out.println("Full\t: " + q.isFull());
+
+        System.out.println("John Sebastian Ablay");
     }
 }
