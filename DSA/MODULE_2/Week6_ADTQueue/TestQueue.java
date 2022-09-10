@@ -17,7 +17,7 @@ public class TestQueue {
         System.out.println(q.display2());
         // System.println(q.display3());
 
-        System.out.println("Now serving\t: " + q.dequeue());
+        System.out.println("Now serving\t\t: " + q.dequeue());
 
         System.out.println("Waiting on Queue\t: ");
         // System.out.println(q.display());
