@@ -1,5 +1,3 @@
-package DSA.Week3_SortingAlgorithm;
-
 import java.util.Scanner;
 
 public class testSortingAlgorithm {

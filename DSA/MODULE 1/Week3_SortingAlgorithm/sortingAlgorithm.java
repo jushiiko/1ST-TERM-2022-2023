@@ -1,5 +1,3 @@
-package DSA.Week3_SortingAlgorithm;
-
 public class sortingAlgorithm {
     // challenge: ascending or descending
     private long units;
