@@ -1,3 +1,4 @@
+package DSA.MODULE_2.Week7_LinkedList;
 public class TestLinkedList {
     public static void main(String[] args) {
         LNode ll = new LNode();
@@ -22,7 +23,7 @@ public class TestLinkedList {
         System.out.println("Empty\t\t: " + ll.isEmpty());
         System.out.println("Current Size\t: " + ll.currentSize());
 
-        ll.addAtPosition(7, 50);
+        ll.addAtPosition(4, 50);
         System.out.println(ll.traverse());
 
         /**

@@ -1,3 +1,4 @@
+package DSA.MODULE_2.Week7_LinkedList;
 public class LNode {
     private int data;
     private LNode head, next;
