@@ -1,5 +1,3 @@
-
-
 public class Written {
     public static void main(String[] args) {
         /**int arr[]={23, 47, 90,31,53,92};
