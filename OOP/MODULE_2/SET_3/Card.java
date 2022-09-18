@@ -1,3 +1,5 @@
+package MODULE_2.SET_3;
+
 public class Card {
     private static String suit;
     private static int number;

@@ -68,18 +68,6 @@ public class Queue {
         return hold;
     }
 
-    public String display3() {
-        String hold = "rear->";
-        if (!isEmpty()) {
-            for (int i = front; i <= rear; i++) {
-                hold += num[i] + " ";
-            }
-        } else {
-            hold = "Queue is empty";
-        }
-        return hold + "->front";
-    }
-
     public String display2() {
         String hold = "head<-";
         if (!isEmpty()) {
@@ -92,6 +80,18 @@ public class Queue {
         return hold + "<-rear";
     }
 
+    public String display3() {
+        String hold = "rear->";
+        if (!isEmpty()) {
+            for (int i = front; i <= rear; i++) {
+                hold += num[i] + " ";
+            }
+        } else {
+            hold = "Queue is empty";
+        }
+        return hold + "->front";
+    }
+
     public int peek() {
         if (isEmpty()) {
             return -1;
@@ -99,7 +99,8 @@ public class Queue {
             return num[front];
         }
     }
-    public int last (){
+
+    public int last() {
         if (isEmpty()) {
             return -1;
         } else {
