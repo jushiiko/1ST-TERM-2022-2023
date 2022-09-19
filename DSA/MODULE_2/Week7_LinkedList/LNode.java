@@ -180,11 +180,21 @@ public class LNode {
         for (int i = 0; i < num.length; i++) {
             for (int j = 1; j < num.length; j++) {
                 if (num[i] == num[j] && i != j && num[i] != 0) {
-                    System.out.println("Number is a duplicate of an element.");
+                    System.out.println("Number is a duplicate in the LinkedList.");
                     System.exit(0);
                 }
             }
         }
     }
+
+    public int getFirst() {
+        if (isEmpty()) {
+            return -1;
+        } else {
+            return head[];
+        }
+    }
+
+
 
 }// end of class

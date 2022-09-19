@@ -66,8 +66,8 @@ public class LNodeMenu extends JFrame implements ActionListener, ItemListener, K
         btnProcess.addActionListener(this);
         cboChoose.addItemListener(this);
         txtPosition.addKeyListener(this);
-        txtValue.addKeyListener(this);
-        btnProcess.setEnabled(false);
+        //txtValue.addKeyListener(this);
+        btnProcess.setEnabled(true);
     }
 
     public static void main(String[] args) {
@@ -128,6 +128,7 @@ public class LNodeMenu extends JFrame implements ActionListener, ItemListener, K
     }
 
     public void keyPressed(KeyEvent arg0) {
+
     }
 
     public void keyReleased(KeyEvent e) {
@@ -158,5 +159,4 @@ public class LNodeMenu extends JFrame implements ActionListener, ItemListener, K
         }
     }
 
-}
-// end of class
+}// end of class
