@@ -1,70 +1,70 @@
 package DSA.MODULE_2.Week7_LinkedList;
+
+import javax.swing.JOptionPane;
+
 public class LNode {
     private int data;
-    private LNode head, next;
+    private LNode next;
+    private LNode head;
+
+    public void error_message(String msg) {
+        JOptionPane.showMessageDialog(null, msg, "Error", JOptionPane.ERROR_MESSAGE);
+    }
 
     public LNode() {
-        head = next = null;
+        next = head = null;
     }
 
     public boolean isEmpty() {
         return head == null;
     }
 
-    public void addAtFirst(int data) {
+    public void addAtFirst(int value) {
         LNode newNode = new LNode();
+
         if (isEmpty()) {
-            newNode.data = data;
+            newNode.data = value;
             newNode.next = null;
             head = newNode;
+
         } else {
-            newNode.data = data;
+            newNode.data = value;
             newNode.next = head;
+
             head = newNode;
         }
     }
 
-    public String traverse() {
-        String hold = " ";
-        LNode link = head;
+    public void addAtLast(int value) {
         if (isEmpty()) {
-            hold = "List is Empty.";
+            addAtFirst(value);
         } else {
-            while (link != null) {
-                // hold += "|" + link.data + "|" + link.next + "|\n";
-                hold += link.data + "->";
+
+            LNode link = head;
+            while (link.next != null) {
                 link = link.next;
             }
-        }
-        return "head-> " + hold + " " + link;
-    }
 
-    public void addAtLast(int data) {
-        if (isEmpty()) {
-            addAtFirst(data);
-        } else {
-            LNode visit = head;
-            while (visit.next != null) {
-                visit = visit.next;
-            }
             LNode newNode = new LNode();
-            newNode.data = data;
+            newNode.data = value;
             newNode.next = null;
-            visit.next = newNode;
+            link.next = newNode;
         }
     }
 
-    public void addAtPosition(int position, int data) {
+    public void addAtPosition(int value, int position) {
         if (isEmpty()) {
-            addAtFirst(data);
+            error_message("List is EMPTY. Node is added at the beginning.");
+            addAtFirst(value);
         } else if (position == 0) {
-            addAtFirst(data);
-        } else if (position < 0 || position > currentSize()) {
-            System.out.println("Position is NOT valid.");
+            JOptionPane.showMessageDialog(null, "Node is added at the beginning");
+            addAtFirst(value);
+        } else if (position < 0 || position > currentSize() + 1) {
+            error_message(position + " is NOT valid");
         } else {
             LNode visit, link;
             visit = link = head;
-            int ctr = 0;
+            int ctr = 1;
             while (ctr != position) {
                 visit = visit.next;
                 ctr++;
@@ -73,97 +73,146 @@ public class LNode {
             while (link.next != visit) {
                 link = link.next;
             }
-
             LNode newNode = new LNode();
-            newNode.data = data;
+            newNode.data = value;
             newNode.next = visit;
             link.next = newNode;
         }
     }
 
-    public int currentSize() {
-        int counter = 1;
+    public void addInMiddle(int value, int position) {
         if (isEmpty()) {
-            counter = -1;
+            addAtFirst(value);
         } else {
-            LNode visit = head;
+            LNode visit, link;
+            visit = link = head;
+            int ctr = 1;
+            while (ctr != position - 1) {
+                link = link.next;
+                ctr++;
+            }
+            while (link.next != visit) {
+                visit = visit.next;
+            }
+            LNode newNode = new LNode();
+            newNode.data = value;
+            newNode.next = visit;
+            link.next = newNode;
+        }
+    }
+
+    public void deleteAtFirst() {
+        if (isEmpty()) {
+            error_message("Deleting Not Allowed. Linked list is empty.");
+        } else {
+            LNode link = head;
+            head = link.next;
+            System.out.println("Deleting is Successful !");
+        }
+    }
+
+    public void deleteAtLast() {
+        if (isEmpty()) {
+            error_message("Deleting Not Allowed. Linked list is empty");
+        } else {
+            LNode visit, link;
+            visit = link = head;
             while (visit.next != null) {
                 visit = visit.next;
+            }
+            while (link.next != visit) {
+                link = link.next;
+            }
+            link.next = null;
+            System.out.println("Deleting Successful !");
+        }
+    }
+
+    public void deleteAtPosition(int position) {
+        if (isEmpty()) {
+            error_message("The list is empty. Try to add a value");
+        } else if (position == 0) {
+            deleteAtFirst();
+        } else if (position < 0 || position > currentSize() + 1) {
+            error_message("Position is NOT valid");
+        } else if (position == currentSize() + 1) {
+            deleteAtLast();
+        } else {
+            LNode visit, link, pointer;
+            visit = link = pointer = head;
+            int ctr = 0;
+            while (ctr != position) {
+                visit = visit.next;
+                ctr++;
+            }
+            while (link.next != visit) {
+                link = link.next;
+            }
+            ctr = 0;
+            while (ctr != position + 1) {
+                pointer = pointer.next;
+                ctr++;
+            }
+            link.next = pointer;
+        }
+    }
+
+    public void deleteValue(int value) {
+
+        if (isEmpty()) {
+            error_message("Deleting Not Allowed. Linked list is empty");
+        } else {
+            LNode visit, link;
+            Object val = (int) value;
+            visit = link = head;
+            while (visit.next != val) {
+                visit = visit.next;
+            }
+            while (link.next != visit) {
+
+                link = link.next;
+            }
+            link.next = null;
+            System.out.println("Deleting Successful !");
+        }
+
+    }
+
+    public String traverse() {
+        if (isEmpty()) {
+            return "List is empty";
+        } else {
+            String hold = "";
+            LNode link = head;
+
+            while (link != null) {
+                hold += " | " + link.data + " | " + link.next + " | \n";
+                link = link.next;
+            }
+            return "head Node | " + head + "\n" + hold;
+        }
+    }
+
+    public int currentSize() {
+        int counter = 0;
+        if (isEmpty()) {
+            error_message("List is empty");
+        } else {
+            LNode link = head;
+            while (link.next != null) {
+                link = link.next;
                 counter++;
             }
         }
         return counter;
     }
 
-    public String deleteAtFirst() {
-        if (isEmpty()) {
-            return ("List is empty.");
-        } else {
-            LNode link = head;
-            head = link.next;
-            return ("First node was deleted successfully.");
-        }
-    }
-
-    public String deleteAtLast() {
-        if (isEmpty()) {
-            return ("List is empty.");
-        } else {
-            LNode link, visit;
-            link = visit = head;
-
-            while (visit.next != null) {
-                visit = visit.next;
-            }
-
-            while (link.next != visit) {
-                link = link.next;
-            }
-
-            link.next = null;
-            return ("Last node was deleted successfully.");
-        }
-    }
-
-    public void deleteAtPosition(int position) {
-        if (isEmpty()) {
-            System.out.println("List is empty.");
-        } else if (position == 0) {
-            deleteAtFirst();
-        } else if (position < 0 || position >= currentSize()) {
-            System.out.println(position + " is NOT valid.");
-        } else {
-            LNode visit, link, pointer;
-            visit = link = pointer = head;
-
-            int ctr = 0;
-
-            while (ctr != position) {
-                visit = visit.next;
-                ctr++;
-            }
-
-            while (link.next != visit) {
-                link = link.next;
-            }
-
-            ctr = 0;
-            while (ctr != position + 1) {
-                pointer = pointer.next;
-                ctr++;
-            }
-
-            link.next = pointer;
-        }
-    }
-
     public boolean isFound(int data) {
         boolean found = false;
         if (isEmpty()) {
-            System.out.println("List is empty.");
+            System.out.println("List is empty");
         } else {
             LNode link = head;
-
             while (link != null) {
                 if (link.data == data) {
                     found = true;
@@ -176,25 +225,59 @@ public class LNode {
         return found;
     }
 
-    public void compare() {
-        for (int i = 0; i < num.length; i++) {
-            for (int j = 1; j < num.length; j++) {
-                if (num[i] == num[j] && i != j && num[i] != 0) {
-                    System.out.println("Number is a duplicate in the LinkedList.");
-                    System.exit(0);
-                }
-            }
-        }
-    }
-
-    public int getFirst() {
+    public Object getFirst() {
         if (isEmpty()) {
-            return -1;
+            System.err.println("Stack is empty");
+            return null;
         } else {
-            return head[];
+            return "Found: " + head.data;
         }
     }
 
+    public Object getLast() {
+        if (isEmpty()) {
+            error_message("The list is empty");
+        }
+        LNode temp = head;
+        while (temp.next != null) {
+            temp = temp.next;
+        }
+        return "Found: " + (Object) temp.data;
 
+    }
 
-}// end of class
+    public Object getAtPosition(int position) {
+        if (isEmpty()) {
+            error_message("The list is empty");
+        } else if (position < 0 || position > currentSize()) {
+            error_message("Position is NOT valid");
+        } else {
+            LNode temp = head;
+            int ctr = 0;
+            while (ctr != position) {
+                temp = temp.next;
+                ctr++;
+            }
+            return "Found: " + (Object) temp.data;
+        }
+        return null;
+    }
+
+    public Object getInMiddle(int position) {
+        if (isEmpty()) {
+            error_message("The list is empty");
+        } else if (position < 0 || position >= currentSize()) {
+            error_message("Position is NOT valid");
+        } else {
+            LNode temp = head;
+            int ctr = 0;
+            while (ctr != position - 1) {
+                temp = temp.next;
+                ctr++;
+            }
+            return (Object) temp.data;
+        }
+        return null;
+    }
+
+}
