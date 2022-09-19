@@ -176,4 +176,15 @@ public class LNode {
         return found;
     }
 
+    public void compare() {
+        for (int i = 0; i < num.length; i++) {
+            for (int j = 1; j < num.length; j++) {
+                if (num[i] == num[j] && i != j && num[i] != 0) {
+                    System.out.println("Number is a duplicate of an element.");
+                    System.exit(0);
+                }
+            }
+        }
+    }
+
 }// end of class
