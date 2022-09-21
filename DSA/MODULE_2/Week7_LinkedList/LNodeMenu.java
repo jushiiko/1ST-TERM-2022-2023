@@ -15,7 +15,7 @@ public class LNodeMenu extends JFrame implements ActionListener, ItemListener, K
 
     LNodeMenu() {
         myNode = new LNode();
-
+        JOptionPane.showMessageDialog(null, "John Sebastian Ablay - A221");
         lblChoose = new JLabel("Choose");
         String menu[] = { "Add At First", "Add At Position", "Add At Last", "Delete At First", "Delete At Position",
                 "Delete At Last", "Get First", "Get At Position", "Get Last", "Search", "Edit" };
@@ -73,7 +73,7 @@ public class LNodeMenu extends JFrame implements ActionListener, ItemListener, K
         // String item=cboChoose.getSelectedItem().toString();
         int pos;
         // selection for ech index
-        if (i == 0) {
+        if (i == 0) { //John Sebastian Ablay
             if (myNode.isFound(Integer.parseInt(txtValue.getText()))) {
                 JOptionPane.showMessageDialog(null, "Element already exists.");
             } else {
@@ -114,12 +114,12 @@ public class LNodeMenu extends JFrame implements ActionListener, ItemListener, K
                 JOptionPane.showMessageDialog(null, "Element already exists.");
             } else {
                 myNode.deleteAtPosition(pos);
-                myNode.addAtPosition(Integer.parseInt(txtValue.getText()), pos - 1);
+                myNode.addAtPosition(Integer.parseInt(txtValue.getText()), pos);
             }
         }
         // display the elements of Linkedlist to tetxArea
         txtAreaDown.setText(myNode.traverse());
-        txtPosition.setText(""); 
+        txtPosition.setText("");
         txtValue.setText("");
         hold = "Empty\t: " + myNode.isEmpty() + "\tCurrent Size\t: " + myNode.currentSize();
         txtAreaUp.setText(hold);
@@ -145,7 +145,7 @@ public class LNodeMenu extends JFrame implements ActionListener, ItemListener, K
             disableAll();
             btnProcess.setEnabled(true);
         } else if (i == 6) {
-            disableAll();   
+            disableAll();
             btnProcess.setEnabled(true);
         } else if (i == 7) {
             enable();
@@ -182,7 +182,7 @@ public class LNodeMenu extends JFrame implements ActionListener, ItemListener, K
         //
     }
 
-     public void keyReleased(KeyEvent e) {
+    public void keyReleased(KeyEvent e) {
         if (e.getSource().equals(txtValue)) {
             if (txtValue.getText().isEmpty()) {
                 btnProcess.setEnabled(false);
@@ -204,10 +204,9 @@ public class LNodeMenu extends JFrame implements ActionListener, ItemListener, K
                 e.consume();
             }
         } else if (e.getSource().equals(txtValue)) {
-            if ( e.getKeyChar() == ' ' || e.getKeyChar() == '0' || e.getKeyChar() == '-'){
+            if (e.getKeyChar() == ' ' || e.getKeyChar() == '0' || e.getKeyChar() == '-') {
                 JOptionPane.showMessageDialog(null, "Integers are only allowed.");
-            }
-            else if (!(Character.isDigit(e.getKeyChar()))) {
+            } else if (!(Character.isDigit(e.getKeyChar()))) {
                 e.consume();
             }
         }
