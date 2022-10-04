@@ -51,17 +51,30 @@ public class Blanket
     public void setSize(String s)
     {
         // write your code here
-        
+        size = s;
+        if (size.equals(SIZE2))
+        {
+            sizePremium = S_PRICE2;
+        }
+        else if (size.equals(SIZE3))
+        {
+            sizePremium = S_PRICE3;
+        }
+        else if (size.equals(SIZE4))
+        {
+            sizePremium = S_PRICE4;
+        }
+        else
+        {
+            sizePremium = 0;
+        }
+
     }
     public void setMaterial(String m)
     {
         // write your code here
         material = m;
-        if (material.equals(MAT1))
-        {
-            materialPremium = 0;
-        }
-        else if (material.equals(MAT2))
+        if (material.equals(MAT2))
         {
             materialPremium = M_PRICE2;
         }
@@ -69,12 +82,16 @@ public class Blanket
         {
             materialPremium = M_PRICE3;
         }
+        else
+        {
+            materialPremium = 0;
+        }
     }
     public String toString()
     {
         // write your code here
-        return "Size: " + size + "" + "Color: " + color + "" + 
-        "Material: " + material + "" + "Price: " + price;
+        return "Size: " + size + "" + "Color: " + color + "" + "Material: " + material + 
+        "" + "Price: " + price + "" + "Size Premium: " + sizePremium + "" + "Material Premium: " + materialPremium;
 
     }
 }

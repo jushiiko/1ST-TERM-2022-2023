@@ -25,7 +25,14 @@ public class ElectricBlanket extends Blanket
     public void setSettings(int s)
     {
         // write your code here
-        settings = s;
+        if (s > 0 && s <= MAX_SETTINGS)
+        {
+            settings = s;
+        }
+        else
+        {
+            settings = 1;
+        }
     }
     public void setHasAutoShutoff(boolean h)
     {
