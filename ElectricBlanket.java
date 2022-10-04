@@ -8,9 +8,8 @@ public class ElectricBlanket extends Blanket
     public ElectricBlanket()
     {
         // write your code here
-        settings = 1;
-        hasAutoShutoff = false;
-        shutoffPremium = 0;
+        this.settings=1;
+        this.hasAutoShutoff=false;
     }
     public int getSettings()
     {
@@ -25,33 +24,30 @@ public class ElectricBlanket extends Blanket
     public void setSettings(int s)
     {
         // write your code here
-        if (s > 0 && s <= MAX_SETTINGS)
-        {
-            settings = s;
+        
+        this.settings = s;
+        if(settings<1 || settings>5){
+            settings=1;
         }
-        else
-        {
-            settings = 1;
-        }
+        
+
     }
     public void setHasAutoShutoff(boolean h)
     {
         // write your code here
-        hasAutoShutoff = h;
-        if (hasAutoShutoff)
-        {
-            shutoffPremium = S_PRICE;
+        this.hasAutoShutoff=h;
+        if(hasAutoShutoff==false){
+            
+        }else{
+            price +=5.75;
         }
-        else
-        {
-            shutoffPremium = 0;
-        }
+        
     }
     public String toString()
     {
         // write your code here
-        return "Size: " + size + "" + "Color: " + color + "" + "Material: " + material + 
-        "" + "Price: " + price + "" + "Settings: " + settings + "" + "Has Auto Shutoff: " + hasAutoShutoff;
+        ElectricBlanket b = new ElectricBlanket();
+         String b1 = b.toString();
+         return b1;
     }
 } 
-
