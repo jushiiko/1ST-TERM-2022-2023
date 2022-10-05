@@ -3,48 +3,48 @@ package DSA.MODULE_3;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class BinaryTree{
+public class BinaryTree {
 
     public class Node {
         public Node left, right;
         public int data;
-    
+
         public Node() {
             left = right = null;
             data = 0;
         }
-    
+
         public Node(int data) {
             left = right = null;
             this.data = data;
         }
-    
+
         public void setLeft(Node LNode) {
             left = LNode;
         }
-    
+
         public void setRight(Node RNode) {
             right = RNode;
         }
-    
+
         public void setData(int data) {
             this.data = data;
         }
-    
+
         public Node getLeft() {
             return left;
         }
-    
+
         public Node getRight() {
             return right;
         }
-    
+
         public int getData() {
             return data;
         }
 
-        
     }
+
     private Node root;
 
     public BinaryTree() {
@@ -135,12 +135,23 @@ public class BinaryTree{
 
     public String traverseInOrder(Node node) {
         if (node != null)
-            return traverseInOrder(node.getLeft())+node.getData() + " " + traverseInOrder(node.getRight());
+            return traverseInOrder(node.getLeft()) + node.getData() + " " + traverseInOrder(node.getRight());
         else
             return "";
     }
-    
 
+    public String traversePreOrder(Node node) {
+        if (node != null)
+            return node.getData() + " " + traverseInOrder(node.getLeft()) + traverseInOrder(node.getRight());
+        else
+            return "";
+    }
 
+    public String traversePostOrder(Node node) {
+        if (node != null)
+            return traverseInOrder(node.getLeft()) + traverseInOrder(node.getRight()) + node.getData() + " ";
+        else
+            return "";
+    }
 }
 // end of outer class
