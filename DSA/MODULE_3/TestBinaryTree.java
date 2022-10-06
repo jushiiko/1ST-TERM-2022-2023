@@ -9,8 +9,8 @@ public class TestBinaryTree {
         System.out.println("Number of Nodes\t: " + tree.count());
         System.out.println("Level Order\t: " + tree.printLevelOrder());
         System.out.println("Traverse InOrder\t: " + tree.traverseInOrder(tree.getRoot()));
-        System.out.println("Traverse PreOrder\t: " + tree.traversePostOrder(tree.getRoot()));
-        System.out.println("Traverse PostOrder\t: " + tree.traversePreOrder(tree.getRoot()));
+        System.out.println("Traverse PreOrder\t: " + tree.traversePreOrder(tree.getRoot()));
+        System.out.println("Traverse PostOrder\t: " + tree.traversePostOrder(tree.getRoot()));
         
         
         // adding Node to a tree
@@ -22,8 +22,9 @@ public class TestBinaryTree {
         System.out.println("Number of Nodes\t: " + tree.count());
         System.out.println("Level Order\t: " + tree.printLevelOrder());
         System.out.println("Traverse InOrder\t: " + tree.traverseInOrder(tree.getRoot()));
-        System.out.println("Traverse PostOrder\t: " + tree.traversePostOrder(tree.getRoot()));
         System.out.println("Traverse PreOrder\t: " + tree.traversePreOrder(tree.getRoot()));
+        System.out.println("Traverse PostOrder\t: " + tree.traversePostOrder(tree.getRoot()));
+
         // adding Node to a tree
         tree.addNode(25);
         tree.addNode(30);
@@ -33,7 +34,7 @@ public class TestBinaryTree {
         System.out.println("Number of Nodes\t: " + tree.count());
         System.out.println("Level Order\t: " + tree.printLevelOrder());
         System.out.println("Traverse InOrder\t: " + tree.traverseInOrder(tree.getRoot()));
-        System.out.println("Traverse PreOrder\t: " + tree.traversePostOrder(tree.getRoot()));
-        System.out.println("Traverse PostOrder\t: " + tree.traversePreOrder(tree.getRoot()));
+        System.out.println("Traverse PreOrder\t: " + tree.traversePreOrder(tree.getRoot()));
+        System.out.println("Traverse PostOrder\t: " + tree.traversePostOrder(tree.getRoot()));
     } // end of main
 } // end of class

@@ -142,16 +142,98 @@ public class BinaryTree {
 
     public String traversePreOrder(Node node) {
         if (node != null)
-            return node.getData() + " " + traverseInOrder(node.getLeft()) + traverseInOrder(node.getRight());
+            return node.getData() + " " + traversePreOrder(node.getLeft()) + traversePreOrder(node.getRight());
         else
             return "";
     }
 
     public String traversePostOrder(Node node) {
         if (node != null)
-            return traverseInOrder(node.getLeft()) + traverseInOrder(node.getRight()) + node.getData() + " ";
+            return traversePostOrder(node.getLeft()) + traversePostOrder(node.getRight()) + node.getData() + " ";
+        else
+            return ""; 
+    }
+
+    public String printInOrder() {
+        return traverseInOrder(root);
+    }
+
+    public String printPreOrder() {
+        return traversePreOrder(root);
+    }
+
+    public String printPostOrder() {
+        return traversePostOrder(root);
+    }
+
+    public String traverseParents(Node node) {
+        if (node != null)
+            return node.getData() + " " + traverseParents(node.getLeft()) + traverseParents(node.getRight());
         else
             return "";
+    }
+
+    public String printLeaves(Node node) {
+        if (node != null) {
+            if (node.getLeft() == null && node.getRight() == null)
+                return node.getData() + " ";
+            else
+                return printLeaves(node.getLeft()) + printLeaves(node.getRight());
+        } else
+            return "";
+    }
+
+    public String depth(Node node) {
+        if (node == null)
+            return "0";
+        else {
+            int lDepth = Integer.parseInt(depth(node.getLeft()));
+            int rDepth = Integer.parseInt(depth(node.getRight()));
+
+            if (lDepth > rDepth)
+                return String.valueOf(lDepth + 1);
+            else
+                return String.valueOf(rDepth + 1);
+        }
+    }
+
+    public String height(Node node) {
+        if (node == null)
+            return "0";
+        else {
+            int lHeight = Integer.parseInt(height(node.getLeft()));
+            int rHeight = Integer.parseInt(height(node.getRight()));
+
+            if (lHeight > rHeight)
+                return String.valueOf(lHeight + 1);
+            else
+                return String.valueOf(rHeight + 1);
+        }
+    }
+
+    public String level(Node node, int level) {
+        if (node == null)
+            return "";
+        if (level == 1)
+            return node.getData() + " ";
+        else if (level > 1) {
+            String str = "";
+            str += level(node.getLeft(), level - 1);
+            str += level(node.getRight(), level - 1);
+            return str;
+        }
+        return "";
+    }
+
+    public String treeType(Node node) {
+        if (node == null)
+            return "Empty Tree";
+        else if (node.getLeft() == null && node.getRight() == null)
+            return "Leaf Node";
+        else if (node.getLeft() == null || node.getRight() == null)
+            return "Half Node";
+        else
+            return "Full Node";
     }
 }
 // end of outer class
