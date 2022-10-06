@@ -28,7 +28,7 @@ public class BTNodeMenu extends JFrame implements ActionListener, ItemListener, 
         btnClose = new JButton("Close");
         lblValue = new JLabel("Value");
         txtValue = new JTextField();
-        setTitle("Binary Tree ADT Application by M. Baste");
+        setTitle("Binary Tree ADT Application by John Sebastian Ablay");
         setSize(400, 300);
         getContentPane().setBackground(new Color(100, 50, 90, 80));
         setLayout(null);

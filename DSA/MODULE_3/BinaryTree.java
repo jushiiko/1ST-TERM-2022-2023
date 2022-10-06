@@ -147,6 +147,8 @@ public class BinaryTree {
             return "";
     }
 
+
+
     public String traversePostOrder(Node node) {
         if (node != null)
             return traversePostOrder(node.getLeft()) + traversePostOrder(node.getRight()) + node.getData() + " ";
@@ -154,16 +156,20 @@ public class BinaryTree {
             return ""; 
     }
 
-    public String printInOrder() {
+    public String traverseInOrder() {
         return traverseInOrder(root);
     }
 
-    public String printPreOrder() {
+    public String traversePostOrder() {
+        return traversePostOrder(root);
+    }
+
+    public String traversePreOrder() {
         return traversePreOrder(root);
     }
 
-    public String printPostOrder() {
-        return traversePostOrder(root);
+    public String printInOrder() {
+        return traverseInOrder(root);
     }
 
     public String traverseParents(Node node) {
@@ -171,6 +177,10 @@ public class BinaryTree {
             return node.getData() + " " + traverseParents(node.getLeft()) + traverseParents(node.getRight());
         else
             return "";
+    }
+
+    public String traverseParents() {
+        return traverseParents(root);
     }
 
     public String printLeaves(Node node) {
@@ -183,6 +193,10 @@ public class BinaryTree {
             return "";
     }
 
+    public String printLeaves() {
+        return printLeaves(root);
+    }
+
     public String depth(Node node) {
         if (node == null)
             return "0";
@@ -190,11 +204,15 @@ public class BinaryTree {
             int lDepth = Integer.parseInt(depth(node.getLeft()));
             int rDepth = Integer.parseInt(depth(node.getRight()));
 
-            if (lDepth > rDepth)
+            if (lDepth < rDepth)
                 return String.valueOf(lDepth + 1);
             else
                 return String.valueOf(rDepth + 1);
         }
+    }
+
+    public String depth() {
+        return depth(root);
     }
 
     public String height(Node node) {
@@ -204,11 +222,15 @@ public class BinaryTree {
             int lHeight = Integer.parseInt(height(node.getLeft()));
             int rHeight = Integer.parseInt(height(node.getRight()));
 
-            if (lHeight > rHeight)
+            if (lHeight < rHeight)
                 return String.valueOf(lHeight + 1);
             else
                 return String.valueOf(rHeight + 1);
         }
+    }
+
+    public String height() {
+        return height(root);
     }
 
     public String level(Node node, int level) {
@@ -225,6 +247,10 @@ public class BinaryTree {
         return "";
     }
 
+    public String level() {
+        return level(root, 1);
+    }
+
     public String treeType(Node node) {
         if (node == null)
             return "Empty Tree";
@@ -234,6 +260,10 @@ public class BinaryTree {
             return "Half Node";
         else
             return "Full Node";
+    }
+
+    public String treeType() {
+        return treeType(root);
     }
 }
 // end of outer class
