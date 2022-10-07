@@ -330,4 +330,37 @@ public class BinaryTree {
         }
     }
 
+    public boolean isFound(int data) {
+        return isFound(root, data);
+    }
+
+    public boolean isFound(Node node, int data) {
+        if (data == node.getData())
+            return false;
+        if ((node.left != null) && (node.right != null))
+            return (treeType(node.left) && treeType(node.right));
+
+        return false;
+    }
+
+    public boolean search(int val) {
+        if (isEmpty()) {
+            return false;
+        } else {
+            return search(root, val);
+        }
+    }
+
+    private boolean search(Node node, int val) {
+        if (node.getData() == val)
+            return true;
+        if (node.getLeft() != null)
+            if (search(node.getLeft(), val))
+                return true;
+        if (node.getRight() != null)
+            if (search(node.getRight(), val))
+                return true;
+        return false;
+    }
+
 }

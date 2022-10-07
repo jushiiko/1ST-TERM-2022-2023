@@ -59,13 +59,16 @@ public class BTNodeMenu extends JFrame implements ActionListener, ItemListener, 
         int i = cboChoose.getSelectedIndex();
         int value = Integer.parseInt(txtValue.getText());
         if (i == 0) {
-            tree.addNode(value); // when the first menu is selected, it will call method insert from Binary Tree
-                                 // ADT
+            if (tree.search(Integer.parseInt(txtValue.getText()))) {
+                JOptionPane.showMessageDialog(null, "Node already exists.");
+            } else {
+                tree.addNode(value);
+            }
         } else if (i == 1) {
-            tree.removeNode(value); // when the second menu is selected, it will call method delete from Binary
-                                    // Tree ADT
-        } else if (i == 2) {
-        } else if (i == 3) {
+            tree.removeNode(value);
+        } else if (i == 2) { 
+        } else if (i == 3) { // cut the tree
+            tree.clear();
         } else if (i == 4) {
             System.exit(0);
         }
@@ -128,18 +131,19 @@ public class BTNodeMenu extends JFrame implements ActionListener, ItemListener, 
 
     /**
      * public void keyTyped(KeyEvent e) {
-        if (e.getSource().equals(txtPosition)) {
-            if (!(Character.isDigit(e.getKeyChar()))) {
-                e.consume();
-            }
-        } else if (e.getSource().equals(txtValue)) {
-            if (e.getKeyChar() == ' ' || e.getKeyChar() == '0' || e.getKeyChar() == '-') {
-                JOptionPane.showMessageDialog(null, "Integers are only allowed.");
-            } else if (!(Character.isDigit(e.getKeyChar()))) {
-                e.consume();
-            }
-        }
-    }
+     * if (e.getSource().equals(txtPosition)) {
+     * if (!(Character.isDigit(e.getKeyChar()))) {
+     * e.consume();
+     * }
+     * } else if (e.getSource().equals(txtValue)) {
+     * if (e.getKeyChar() == ' ' || e.getKeyChar() == '0' || e.getKeyChar() == '-')
+     * {
+     * JOptionPane.showMessageDialog(null, "Integers are only allowed.");
+     * } else if (!(Character.isDigit(e.getKeyChar()))) {
+     * e.consume();
+     * }
+     * }
+     * }
      */
 
     void display() {
