@@ -67,6 +67,11 @@ public class BTNodeMenu extends JFrame implements ActionListener, ItemListener, 
         } else if (i == 1) {
             tree.removeNode(value);
         } else if (i == 2) { 
+            if (tree.search(Integer.parseInt(txtValue.getText()))) {
+            JOptionPane.showMessageDialog(null, "Node is found.");
+            } else {
+                JOptionPane.showMessageDialog(null, "Node is not found.");
+            }
         } else if (i == 3) { // cut the tree
             tree.clear();
         } else if (i == 4) {
