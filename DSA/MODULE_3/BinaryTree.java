@@ -147,13 +147,11 @@ public class BinaryTree {
             return "";
     }
 
-
-
     public String traversePostOrder(Node node) {
         if (node != null)
             return traversePostOrder(node.getLeft()) + traversePostOrder(node.getRight()) + node.getData() + " ";
         else
-            return ""; 
+            return "";
     }
 
     public String traverseInOrder() {
@@ -173,9 +171,12 @@ public class BinaryTree {
     }
 
     public String traverseParents(Node node) {
-        if (node != null)
-            return node.getData() + " " + traverseParents(node.getLeft()) + traverseParents(node.getRight());
-        else
+        if (node != null) {
+            if (node.getLeft() != null || node.getRight() != null)
+                return node.getData() + " " + traverseParents(node.getLeft()) + traverseParents(node.getRight());
+            else
+                return traverseParents(node.getLeft()) + traverseParents(node.getRight());
+        } else
             return "";
     }
 
@@ -233,37 +234,100 @@ public class BinaryTree {
         return height(root);
     }
 
-    public String level(Node node, int level) {
+    public String level(Node node) {
         if (node == null)
-            return "";
-        if (level == 1)
-            return node.getData() + " ";
-        else if (level > 1) {
-            String str = "";
-            str += level(node.getLeft(), level - 1);
-            str += level(node.getRight(), level - 1);
-            return str;
+            return "0";
+        else {
+            int lLevel = Integer.parseInt(level(node.getLeft()));
+            int rLevel = Integer.parseInt(level(node.getRight()));
+
+            if (lLevel < rLevel)
+                return String.valueOf(lLevel + 1);
+            else
+                return String.valueOf(rLevel + 1);
         }
-        return "";
     }
 
     public String level() {
-        return level(root, 1);
+        return level(root);
     }
 
-    public String treeType(Node node) {
+    public boolean treeType(Node node) {
+
         if (node == null)
-            return "Empty Tree";
-        else if (node.getLeft() == null && node.getRight() == null)
-            return "Leaf Node";
-        else if (node.getLeft() == null || node.getRight() == null)
-            return "Half Node";
-        else
-            return "Full Node";
+            return true;
+
+        if (node.left == null && node.right == null)
+            return true;
+
+        if ((node.left != null) && (node.right != null))
+            return (treeType(node.left) && treeType(node.right));
+
+        return false;
     }
 
     public String treeType() {
-        return treeType(root);
+        return root == null ? "Empty" : treeType(root) == true ? "Full" : "Complete";
     }
+
+    public Node remove(Node node, int data) {
+        if (node == null)
+            return null;
+        if (node.getData() == data) {
+            if (node.getLeft() == null && node.getRight() == null)
+                return null;
+            if (node.getLeft() == null)
+                return node.getRight();
+            if (node.getRight() == null)
+                return node.getLeft();
+
+            int smallestValue = findSmallestValue(node.getRight());
+            node.setData(smallestValue);
+            node.setRight(removeNode(node.getRight(), smallestValue));
+            return node;
+        }
+        if (data < node.getData()) {
+            node.setLeft(removeNode(node.getLeft(), data));
+            return node;
+        }
+        node.setRight(removeNode(node.getRight(), data));
+        return node;
+    }
+
+    private int findSmallestValue(Node root) {
+        return root.getLeft() == null ? root.getData() : findSmallestValue(root.getLeft());
+    }
+
+    public void removeNode(int data) {
+        root = removeNode(root, data);
+    }
+
+    public void clear() {
+        root = null;
+    }
+
+    public Node removeNode(Node node, int data) {
+        if (node == null)
+            return null;
+        if (data < node.getData()) {
+            node.setLeft(removeNode(node.getLeft(), data));
+            return node;
+        } else if (data > node.getData()) {
+            node.setRight(removeNode(node.getRight(), data));
+            return node;
+        } else {
+            if (node.getLeft() == null && node.getRight() == null)
+                return null;
+            if (node.getLeft() == null)
+                return node.getRight();
+            if (node.getRight() == null)
+                return node.getLeft();
+
+            int smallestValue = findSmallestValue(node.getRight());
+            node.setData(smallestValue);
+            node.setRight(removeNode(node.getRight(), smallestValue));
+            return node;
+        }
+    }
+
 }
-// end of outer class

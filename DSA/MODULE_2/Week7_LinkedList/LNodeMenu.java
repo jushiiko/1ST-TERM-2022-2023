@@ -73,7 +73,7 @@ public class LNodeMenu extends JFrame implements ActionListener, ItemListener, K
         // String item=cboChoose.getSelectedItem().toString();
         int pos;
         // selection for ech index
-        if (i == 0) { //John Sebastian Ablay
+        if (i == 0) { // John Sebastian Ablay
             if (myNode.isFound(Integer.parseInt(txtValue.getText()))) {
                 JOptionPane.showMessageDialog(null, "Element already exists.");
             } else {
