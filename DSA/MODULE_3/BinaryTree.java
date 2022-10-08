@@ -270,77 +270,12 @@ public class BinaryTree {
         return root == null ? "Empty" : treeType(root) == true ? "Full" : "Complete";
     }
 
-    public Node remove(Node node, int data) {
-        if (node == null)
-            return null;
-        if (node.getData() == data) {
-            if (node.getLeft() == null && node.getRight() == null)
-                return null;
-            if (node.getLeft() == null)
-                return node.getRight();
-            if (node.getRight() == null)
-                return node.getLeft();
-
-            int smallestValue = findSmallestValue(node.getRight());
-            node.setData(smallestValue);
-            node.setRight(removeNode(node.getRight(), smallestValue));
-            return node;
-        }
-        if (data < node.getData()) {
-            node.setLeft(removeNode(node.getLeft(), data));
-            return node;
-        }
-        node.setRight(removeNode(node.getRight(), data));
-        return node;
-    }
-
+    
     private int findSmallestValue(Node root) {
         return root.getLeft() == null ? root.getData() : findSmallestValue(root.getLeft());
     }
-
-    public void removeNode(int data) {
-        root = removeNode(root, data);
-    }
-
     public void clear() {
         root = null;
-    }
-
-    public Node removeNode(Node node, int data) {
-        if (node == null)
-            return null;
-        if (data < node.getData()) {
-            node.setLeft(removeNode(node.getLeft(), data));
-            return node;
-        } else if (data > node.getData()) {
-            node.setRight(removeNode(node.getRight(), data));
-            return node;
-        } else {
-            if (node.getLeft() == null && node.getRight() == null)
-                return null;
-            if (node.getLeft() == null)
-                return node.getRight();
-            if (node.getRight() == null)
-                return node.getLeft();
-
-            int smallestValue = findSmallestValue(node.getRight());
-            node.setData(smallestValue);
-            node.setRight(removeNode(node.getRight(), smallestValue));
-            return node;
-        }
-    }
-
-    public boolean isFound(int data) {
-        return isFound(root, data);
-    }
-
-    public boolean isFound(Node node, int data) {
-        if (data == node.getData())
-            return false;
-        if ((node.left != null) && (node.right != null))
-            return (treeType(node.left) && treeType(node.right));
-
-        return false;
     }
 
     public boolean search(int val) {
@@ -363,4 +298,105 @@ public class BinaryTree {
         return false;
     }
 
+    private void delete(Node node, Node delNode) {
+        if (isEmpty()) {
+            String hold = "Tree is empty";
+        } else {
+            Queue<Node> q = new LinkedList<Node>();
+            q.add(root);
+
+            Node newNode = null;
+
+            while (!q.isEmpty()) {
+                newNode = q.peek();
+                q.remove();
+
+                if (newNode == delNode) {
+                    newNode = null;
+                }
+                if (newNode.getRight() != null) {
+                    if (newNode.getRight() == delNode) {
+                        newNode.setRight(null);
+                    } else
+                        q.add(newNode.getRight());
+                }
+                if (newNode.getLeft() != null) {
+                    if (newNode.getLeft() == delNode) {
+                        newNode.setLeft(null);
+                    } else
+                        q.add(newNode.getLeft());
+                }
+            }
+        }
+    }
+
+    private void deleteGiven(Node node, int data) {
+        if (node == null)
+            return;
+
+        if (node.getLeft() == null && node.getRight() == null) {
+            if (node.getData() == data) {
+                node = null;
+                return;
+            } else {
+                return;
+            }
+        }
+
+        Queue<Node> q = new LinkedList<Node>();
+        q.add(node);
+        Node newNode = null, temp = null;
+
+        // Do level order traversal until
+        // we find key and last node.
+        while (!q.isEmpty()) {
+            newNode = q.peek();
+            q.remove();
+
+            if (newNode.getData() == data)
+                temp = newNode;
+
+            if (newNode.getLeft() != null)
+                q.add(newNode.getLeft());
+
+            if (newNode.getRight() != null)
+                q.add(newNode.getRight());
+        }
+
+        if (temp != null) {
+            int x = newNode.getData();
+            delete(node, newNode);
+            temp.setData(x);
+        }
+    }
+
+    private int getLastNode(Node node) {
+        int last = 0;
+        if (isEmpty()) {
+            return last;
+        } else {
+            Queue<Node> q = new LinkedList<Node>();
+            q.add(node);
+
+            while (!q.isEmpty()) {
+                Node newNode = q.poll();
+                last = newNode.getData();
+                if (newNode.getLeft() != null) {
+                    q.add(newNode.getLeft());
+                }
+                if (newNode.getRight() != null) {
+                    q.add(newNode.getRight());
+                }
+            }
+        }
+        return last;
+    }
+
+    public int getLastNode() {
+        return getLastNode(root);
+    }
+
+    public void deleteLast() {
+        deleteGiven(root, getLastNode());
+    }
 }

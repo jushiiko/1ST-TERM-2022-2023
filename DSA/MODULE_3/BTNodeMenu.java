@@ -65,7 +65,7 @@ public class BTNodeMenu extends JFrame implements ActionListener, ItemListener, 
                 tree.addNode(value);
             }
         } else if (i == 1) {
-            tree.removeNode(value);
+            tree.deleteLast();
         } else if (i == 2) { 
             if (tree.search(Integer.parseInt(txtValue.getText()))) {
             JOptionPane.showMessageDialog(null, "Node is found.");
@@ -86,7 +86,8 @@ public class BTNodeMenu extends JFrame implements ActionListener, ItemListener, 
         if (i == 0) {
             disable();
         } else if (i == 1) {
-            enable();
+            disableAll();
+            
         } else if (i == 2) {
             disable();
         } else if (i == 3) {
@@ -106,10 +107,12 @@ public class BTNodeMenu extends JFrame implements ActionListener, ItemListener, 
 
     public void disable() {
         txtValue.setEditable(true);
+        btnProcess.setEnabled(true);
     }
 
     public void disableAll() {
         txtValue.setEditable(false);
+        btnProcess.setEnabled(true);
     }
 
     public void keyPressed(KeyEvent arg0) {
