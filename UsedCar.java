@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class UsedCar {
     String vin;
     String make;
@@ -8,10 +10,10 @@ public class UsedCar {
     final int VIN_NUM_LENGTH = 4;
     final int LOW_YEAR = 1997;
     final int HIGH_YEAR = 2017;
-    final String[] MAKES = {"Ford", "Honda", "Toyota", "Chrysler", "Other"};
-    
+    final String[] MAKES = { "Ford", "Honda", "Toyota", "Chrysler", "Other" };
+
     public UsedCar(String num, String carMake,
-                   int carYear, int miles, int pr) throws UsedCarException {
+            int carYear, int miles, int pr) throws UsedCarException {
         // Write your code here
         if (num.length() != VIN_NUM_LENGTH) {
             throw new UsedCarException("Invalid VIN number.");
@@ -25,13 +27,16 @@ public class UsedCar {
         if (pr < 0) {
             throw new UsedCarException("Invalid price.");
         }
+        if (!Arrays.asList(MAKES).contains(carMake)) {
+            throw new UsedCarException("Invalid make.");
+        }
         vin = num;
         make = carMake;
         year = carYear;
         mileage = miles;
         price = pr;
     }
-    
+
     public UsedCar() {
         // Write your code here
         vin = DEFAULT_VIN;
@@ -40,15 +45,15 @@ public class UsedCar {
         mileage = 0;
         price = 0;
     }
-    
+
     public String getVin() {
         // Write your code here
         return vin;
     }
-    
+
     public String toString() {
         return "VIN " + vin + "  Make: " + make +
-               "\n   Year: " + year + "  " + mileage + " miles   $" +
-               price;
+                "\n   Year: " + year + "  " + mileage + " miles   $" +
+                price;
     }
 }
